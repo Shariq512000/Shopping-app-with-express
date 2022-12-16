@@ -8,11 +8,6 @@ const port = process.env.PORT || 3001;
 app.use(cors());
 app.use(express.json());
 
-const __dirname = path.resolve()
-
-app.use('/', express.static(path.join(__dirname, './web/build')))
-app.use('*', express.static(path.join(__dirname, './web/build')))
-
 let products = []; // TODO: connect with mongodb instead
 
 
@@ -146,6 +141,11 @@ app.put('/product/:id', (req, res) => {
         message: "product added successfully"
     });
 })
+const __dirname = path.resolve()
+
+app.use('/', express.static(path.join(__dirname, './web/build')))
+app.use('*', express.static(path.join(__dirname, './web/build')))
+
 
 
 
